@@ -175,55 +175,99 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="hidden lg:flex relative h-[600px] items-center justify-center overflow-hidden"
           >
-             {/* Realistic App UI Mock up based on your preference */}
-             <div className="bg-white rounded-[40px] shadow-3xl overflow-hidden border border-white/80 p-2">
-               <div className="bg-gray-50 rounded-[32px] overflow-hidden border border-gray-100">
-                  <div className="p-6 border-b border-gray-200 bg-white flex items-center justify-between">
-                     <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white">
-                           <Truck className="w-4 h-4" />
-                        </div>
-                        <div className="h-4 w-32 bg-gray-100 rounded"></div>
-                     </div>
-                  </div>
-                  <div className="p-6 grid grid-cols-3 gap-6">
-                     <div className="col-span-2 space-y-6">
-                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                           <div className="flex justify-between items-center mb-6">
-                              <p className="font-bold">Pedidos en tiempo real</p>
-                              <div className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-bold rounded-full">EN VIVO</div>
-                           </div>
-                           <div className="space-y-4">
-                              {[1,2,3].map(i => (
-                                <div key={i} className="flex items-center gap-4 py-3 border-b border-gray-50 last:border-0">
-                                   <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center">
-                                      <Package className="w-5 h-5 text-gray-400" />
-                                   </div>
-                                   <div className="flex-1">
-                                      <div className="h-3 w-2/3 bg-gray-100 rounded mb-1"></div>
-                                      <div className="h-2 w-1/3 bg-gray-50 rounded"></div>
-                                   </div>
-                                   <div className="h-4 w-12 bg-emerald-100 rounded"></div>
-                                </div>
-                              ))}
-                           </div>
-                        </div>
-                     </div>
-                     <div className="space-y-6">
-                        <div className="bg-emerald-600 p-6 rounded-2xl text-white">
-                           <p className="text-xs font-bold opacity-80 uppercase tracking-wider mb-2">Entregas Hoy</p>
-                           <p className="text-3xl font-bold">1,284</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center">
-                           <div className="w-16 h-16 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin mb-4"></div>
-                           <p className="text-xl font-bold">98.2%</p>
-                        </div>
-                     </div>
-                  </div>
+            {/* Minimalist Radar Pulses */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ 
+                    scale: [0.8, 2.5], 
+                    opacity: [0.5, 0] 
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    delay: i * 1.3,
+                    ease: "easeOut"
+                  }}
+                  className="absolute w-64 h-64 border border-emerald-500/30 rounded-full"
+                />
+              ))}
+            </div>
+
+            {/* Central Hub */}
+            <div className="relative z-10">
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
+              >
+                {/* Main Device Visual */}
+                <div className="w-56 h-56 bg-white rounded-[48px] shadow-2xl border border-gray-100 flex items-center justify-center relative overflow-hidden group">
+                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-transparent opacity-50"></div>
+                   <Truck className="w-20 h-20 text-emerald-600 relative z-10" />
+                   
+                   {/* Mini "Live" indicator */}
+                   <div className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full border border-emerald-100">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                      <span className="text-[10px] font-black text-emerald-700 uppercase tracking-tighter">Live</span>
+                   </div>
+                </div>
+
+                {/* Satellite Nodes */}
+                {[
+                  { top: '-20px', left: '-20px', icon: <Zap className="w-4 h-4" />, color: 'bg-emerald-500', delay: 0 },
+                  { bottom: '-10px', right: '-30px', icon: <Globe className="w-4 h-4" />, color: 'bg-blue-500', delay: 0.5 },
+                  { top: '40%', right: '-50px', icon: <Package className="w-4 h-4" />, color: 'bg-emerald-400', delay: 0.8 },
+                ].map((node, i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 3, repeat: Infinity, delay: node.delay }}
+                    style={{ top: node.top, left: node.left, bottom: node.bottom, right: node.right }}
+                    className={`absolute w-12 h-12 ${node.color} text-white rounded-2xl shadow-xl flex items-center justify-center z-20`}
+                  >
+                    {node.icon}
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Floating Info Cards */}
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="absolute top-20 right-0 lg:right-10 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white max-w-[180px] hidden sm:block"
+            >
+               <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Entregas Hoy</p>
+               <div className="flex items-end gap-2">
+                  <p className="text-2xl font-bold text-brevo-dark">1,284</p>
+                  <span className="text-emerald-500 text-xs font-bold mb-1">+12%</span>
                </div>
-             </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="absolute bottom-20 left-0 lg:left-10 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white max-w-[180px] hidden sm:block"
+            >
+               <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Optimización</p>
+               <p className="text-2xl font-bold text-brevo-dark">98.2%</p>
+               <div className="w-full bg-gray-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: '98.2%' }}
+                    transition={{ duration: 2, delay: 1 }}
+                    className="h-full bg-emerald-500"
+                  />
+               </div>
+            </motion.div>
+
           </motion.div>
         </div>
       </section>
