@@ -22,15 +22,6 @@ export default function App() {
       
       <main>
         <Hero />
-        <TrustSection />
-        
-        <ImageSection 
-          image="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
-          alt="Logistics center"
-          title="Eficiencia sin fronteras"
-          description="Nuestra red global permite que tu negocio llegue a cualquier rincón del planeta con la misma precisión que una entrega local."
-        />
-
         <Features />
         <StatsSection />
         <IndustrySolutions />

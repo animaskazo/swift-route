@@ -3,17 +3,17 @@ import { ArrowRight } from 'lucide-react';
 export const Pricing = () => {
   const pricingPlans = [
     {
-      name: 'Startup',
-      price: '49',
-      drivers: 'Hasta 5 conductores',
+      name: 'Basic',
+      price: '59',
+      drivers: 'Hasta 4 conductores',
       features: ['Dashboard de gestión', 'App para conductores', 'Protocolos de incidencia', 'Soporte vía email'],
       highlight: false
     },
     {
       name: 'Business',
-      price: '149',
+      price: '259',
       drivers: 'Hasta 20 conductores',
-      features: ['Todo en Startup', 'Optimizador de rutas (AI)', 'Marca Blanca parcial', 'Notificaciones SMS/WhatsApp', 'Soporte prioritario'],
+      features: ['Todo en Basic', 'Envios Flex', 'Optimizador de rutas (AI)', 'Marca Blanca parcial', 'Notificaciones SMS/WhatsApp', 'Soporte prioritario'],
       highlight: true
     },
     {
