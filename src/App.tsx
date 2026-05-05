@@ -101,12 +101,9 @@ export default function App() {
           </div>
 
           <div className="hidden lg:flex items-center gap-6 text-[15px]">
-            <a href="#" className="font-bold hover:opacity-70 cursor-pointer">Conectarse</a>
-            <button className="bg-brevo-dark text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all">
-              Regístrate gratis
-            </button>
-            <a href="#contacto" className="border-2 border-brevo-dark text-brevo-dark px-6 py-3 rounded-xl font-bold hover:bg-brevo-dark hover:text-white transition-all">
-              Hablar con Ventas
+            <a href="#" className="font-bold hover:opacity-70 cursor-pointer">Iniciar sesión</a>
+            <a href="#contacto" className="bg-brevo-dark text-white px-8 py-3 rounded-xl font-bold hover:opacity-90 transition-all">
+              Hablar con ventas
             </a>
           </div>
 
@@ -133,7 +130,9 @@ export default function App() {
               <a href="#funciones" onClick={() => setMobileMenuOpen(false)}>Plataforma</a>
               <a href="#precios" onClick={() => setMobileMenuOpen(false)}>Precios</a>
               <a href="#contacto" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
-              <button className="w-full bg-brevo-dark text-white py-4 rounded-xl">Regístrate gratis</button>
+              <div className="h-px bg-gray-100 my-2"></div>
+              <a href="#" onClick={() => setMobileMenuOpen(false)}>Iniciar sesión</a>
+              <a href="#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full bg-brevo-dark text-white py-4 rounded-xl text-center">Hablar con ventas</a>
             </div>
           </motion.div>
         )}
@@ -156,9 +155,9 @@ export default function App() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 items-start">
-              <button className="bg-brevo-dark text-white px-10 py-5 rounded-2xl font-bold text-xl hover:opacity-90 shadow-2xl transition-all">
-                Pruébalo gratis
-              </button>
+              <a href="#contacto" className="bg-brevo-dark text-lg text-white px-8 py-5 rounded-xl font-bold hover:opacity-90 transition-all">
+              Hablar con ventas
+            </a>
             </div>
             
             <div className="mt-8 flex items-center gap-4">
@@ -296,7 +295,7 @@ export default function App() {
               { icon: <MessageCircle />, title: 'Marca Blanca', desc: 'Personaliza el link de seguimiento y notificaciones con el logo y colores de tu propia empresa.' }
             ].map((item, i) => (
               <div key={i} className="p-10 rounded-[32px] border border-gray-100 hover:bg-brevo-bg-light/20 transition-all group">
-                <div className="w-14 h-14 bg-white shadow-xl text-brevo-primary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 bg-white shadow-xl text-emerald-700 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 tracking-tight">{item.title}</h3>
@@ -308,24 +307,24 @@ export default function App() {
       </section>
 
       {/* NEW: Primary Green Block - Statistics/Social Proof */}
-      <section className="bg-brevo-primary py-24 text-emerald-950 overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-20 pointer-events-none">
+      <section className="bg-brevo-primary py-24 text-brevo-dark overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
            <Globe className="w-96 h-96 -mr-20 -mt-10" />
         </div>
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-4 gap-12 text-center lg:text-left items-center">
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 border-white/20">
                <h3 className="text-3xl font-display font-bold leading-tight tracking-tight">Rendimiento garantizado a escala global</h3>
             </div>
-            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8 text-black">
                {[
                  { val: '24M+', label: 'Entregas procesadas/año' },
                  { val: '99.9%', label: 'Uptime de la plataforma' },
                  { val: '< 2seg', label: 'Latencia de tracking' }
                ].map((stat, i) => (
-                 <div key={i} className="bg-brevo-dark/5 backdrop-blur-sm p-8 rounded-[32px] border border-brevo-dark/5">
-                    <p className="text-5xl font-display font-bold mb-2">{stat.val}</p>
-                    <p className="text-sm font-black uppercase tracking-widest opacity-80 text-emerald-900">{stat.label}</p>
+                 <div key={i} className="bg-white/50 backdrop-blur-sm p-8 rounded-[32px] shadow-lg border border-white/20">
+                    <p className="text-5xl font-display font-bold mb-2 text-emerald-900">{stat.val}</p>
+                    <p className="text-sm font-black uppercase tracking-widest opacity-80">{stat.label}</p>
                  </div>
                ))}
             </div>
@@ -379,9 +378,9 @@ export default function App() {
       </section>
 
       {/* Full Width Image Section 2 */}
-      <section className="w-full h-[600px] overflow-hidden">
+      <section className="w-full h-[900px] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=2000" 
+          src="https://images.unsplash.com/photo-1543499459-d1460946bdc6?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
           alt="Delivery driver" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -407,7 +406,7 @@ export default function App() {
                   <span className="text-5xl font-display font-bold">{plan.price === 'Custom' ? '' : '$'}{plan.price}</span>
                   {plan.price !== 'Custom' && <span className="opacity-60 text-lg font-medium">/mes</span>}
                 </div>
-                <p className="font-bold text-brevo-primary mb-10 tracking-tight">{plan.drivers}</p>
+                <p className="font-bold text-emerald-800 mb-10 tracking-tight">{plan.drivers}</p>
                 
                 <ul className="space-y-4 mb-12 flex-grow">
                    {plan.features.map(f => (
@@ -421,7 +420,7 @@ export default function App() {
                 </ul>
 
                 <button className={`w-full py-5 rounded-2xl font-bold text-lg transition-all ${plan.highlight ? 'bg-brevo-dark text-white hover:bg-black' : 'bg-gray-100 text-brevo-dark hover:bg-gray-200'}`}>
-                  {plan.price === 'Custom' ? 'Hablar con Ventas' : 'Pruébalo Gratis'}
+                  Contactar a ventas
                 </button>
               </div>
             ))}
@@ -443,11 +442,11 @@ export default function App() {
                 
                 <div className="grid grid-cols-2 gap-8">
                     <div>
-                        <p className="text-4xl font-display font-bold text-brevo-primary mb-2">98%</p>
+                        <p className="text-4xl font-display font-bold text-emerald-900 mb-2">98%</p>
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Tasa de éxito</p>
                     </div>
                     <div>
-                        <p className="text-4xl font-display font-bold text-brevo-primary mb-2">-40%</p>
+                        <p className="text-4xl font-display font-bold text-emerald-900 mb-2">-40%</p>
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Carga de Soporte</p>
                     </div>
                 </div>
@@ -490,7 +489,7 @@ export default function App() {
                                 <input required type="email" placeholder="email@empresa.com" className="w-full px-6 py-4 rounded-2xl border border-gray-200 outline-none focus:ring-2 focus:ring-brevo-primary/20 focus:border-brevo-primary bg-white transition-all font-medium" />
                             </div>
                             <button type="submit" className="w-full bg-brevo-dark text-white py-6 rounded-2xl font-bold text-xl hover:bg-black transition-all flex items-center justify-center gap-3 shadow-lg">
-                                Solicitar Demo <ArrowRight className="w-5 h-5" />
+                                Contactar a ventas <ArrowRight className="w-5 h-5" />
                             </button>
                         </motion.form>
                     )}
@@ -501,15 +500,15 @@ export default function App() {
 
       {/* FINAL GREEN BLOCK - CTA */}
       <section className="bg-brevo-primary py-20 lg:py-32">
-        <div className="max-w-5xl mx-auto px-6 text-center text-emerald-950">
+        <div className="max-w-5xl mx-auto px-6 text-center text-brevo-dark">
            <h2 className="text-4xl lg:text-7xl font-display font-bold mb-10 tracking-tighter">¿Estás listo para dominar la última milla?</h2>
-           <p className="text-xl lg:text-2xl font-medium opacity-80 mb-12 max-w-2xl mx-auto">Únete a cientos de empresas que ya han escalado su logística con SwiftRoute.</p>
+           <p className="text-xl lg:text-2xl font-medium opacity-90 mb-12 max-w-2xl mx-auto">Únete a cientos de empresas que ya han escalado su logística con SwiftRoute.</p>
            <div className="flex flex-col sm:flex-row justify-center gap-6">
               <button className="bg-brevo-dark text-white px-12 py-5 rounded-2xl font-bold text-xl hover:opacity-90 transition-all shadow-xl">
-                 Comenzar ahora gratis
+                 Contactar a ventas
               </button>
-              <button className="bg-white text-brevo-dark border-2 border-brevo-dark/10 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-3">
-                 Reservar consultoría <ArrowRight className="w-5 h-5" />
+              <button className="bg-white text-brevo-dark px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-3">
+                 Solicitar consultoría <ArrowRight className="w-5 h-5" />
               </button>
            </div>
         </div>
